@@ -87,6 +87,23 @@
             button:hover {
                 background-color: #5e331a;
             }
+        @keyframes typing {
+            from {
+                width: 0;
+            }
+
+            to {
+                width: 100%;
+            }
+        }
+        #verse-text {
+            display: inline-block;
+            /*white-space: nowrap;  文字不換行 */
+            overflow: hidden; /* 隱藏超出部分文字 */
+            border-right: 2px solid #924E28; /* 光標 */
+            font-size: 1em;
+        }
+
         #result-text {
             font-size: 1.1em;
             color: #924E28;
@@ -319,16 +336,40 @@
                 <p style="color: #0e5563; font-size: 1.1em; margin-bottom: 5px;">
                     🌟您的專屬祝福🌟
                 </p>
-                <div style="font-size: 1em; margin-top: 15px;" >
-                    ${verse}
+                <div id="verse-text" style="font-size: 1em; margin-top: 15px;" >
+                    
                 </div>
             `;
+            document.getElementById('verse-text').style.borderRight = "2px solid #924E28"; // 顯示光標
+            typeVerse(verse);
         } else {
             // 如果資料查找失敗 (理論上不會發生，除非您的資料輸入有誤)
             resultTextElement.innerHTML = "抱歉，找不到對應的祝福經文，請檢查您選擇的主題與輸入的月份是否正確。";
             resultTextElement.classList.add('error');
         }
     }
+
+    function typeVerse(verse) {
+        const el = document.getElementById('verse-text');
+        el.innerHTML = ""; // 清空文字
+        let i = 0;
+
+        const speed = 50; // 每個字打出的間隔 (ms)
+
+        function type() {
+            if (i < verse.length) {
+                el.innerHTML += verse.charAt(i);
+                i++;
+                setTimeout(type, speed);
+            } else {
+                // 打完後，移除光標
+                el.style.borderRight = "none";
+            }
+        }
+
+        type();
+    }
+
 </script>
 </body>
 </html>
