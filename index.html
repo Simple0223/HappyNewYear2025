@@ -26,8 +26,24 @@
             max-width: 90%;
             width: 450px;
         }
+        .container-img {
+            width: calc(100% + 80px);
+            margin-top: -40px;
+            margin-left: -40px;
+            margin-right: -40px;
+            object-fit: cover;
+            border-radius: 10px 10px 0 0;
+            display: block;
+            margin-bottom: 20px;
+        }
+        h1 {
+            color: #007bff;
+            margin-bottom: 5px;
+            font-size: 1.8em;
+        }
         h2 {
             color: #924E28;
+            font-size: 18px;
         }
         p.subtitle {
             margin-bottom: 30px;
@@ -71,15 +87,6 @@
             button:hover {
                 background-color: #5e331a;
             }
-        #result-box {
-            margin-top: 30px;
-            padding: 20px;
-            min-height: 100px;
-            border: 2px solid #924E28;
-            border-radius: 10px;
-            background-color: #fff;
-            text-align: center;
-        }
         #result-text {
             font-size: 1.1em;
             color: #924E28;
@@ -90,38 +97,70 @@
             color: red;
             font-weight: bold;
         }
+        #result-box {
+            position: relative;
+            margin-top: 30px;
+            padding: 30px 20px 40px 20px;
+            min-height: 100px;
+            border: 2px solid #924E28;
+            border-radius: 10px;
+            background-color: #fff;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .corner-img {
+            position: absolute;
+            
+        }
+
+        .left-top {
+            width: 77.5px;
+            height: 43.4px;
+            top: 0;
+            left: 0;
+        }
+
+        .right-bottom {
+            width: 155px;
+            height: 73px;
+            bottom: 0;
+            right: 0;
+        }
+
     </style>
 </head>
 <body>
 
-<div class="container">
-     <h3>2025-2026夏凱納跨年禱告會</h3>
-     <h1>✨成為貴重的器皿✨</h1>
-    <h2>-加碼祝福經文-</h2>
-    <p class="subtitle">請選擇您收到的**祝福卡主題**並輸入**生日月份**。</p>
-    
-    <label for="input-theme">1. 選擇卡片主題：</label>
-    <select id="input-theme">
-        <option value="">-- 請選擇您卡片上的主題 --</option>
-        <option value="財務豐盛(祝福金杯)">財務豐盛(祝福金杯)</option>
-        <option value="家庭幸福(禱告香爐)">家庭幸福(禱告香爐)</option>
-        <option value="事奉得力(恩膏油瓶)">事奉得力(恩膏油瓶)</option>
-        <option value="靈命興盛(百煉金碗)">靈命興盛(百煉金碗)</option>
-        <option value="職場卓越(能力寶盒)">職場卓越(能力寶盒)</option>
-        <option value="福音廣傳(馨香花瓶)">福音廣傳(馨香花瓶)</option>
-        <option value="關係和睦(喜樂酒壺)">關係和睦(喜樂酒壺)</option>
-        <option value="牧養倍增(真理玉盤)">牧養倍增(真理玉盤)</option>
-    </select>
+    <div class="container">
+        <img src="https://github.com/Simple0223/HappyNewYear2025/blob/main/2026-%E8%B7%A8%E5%B9%B4%E7%B6%B2%E9%A0%81banner.jpg?raw=true" alt="header image" class="container-img">
+        <h2>-專屬祝福經文-</h2>
+        <p class="subtitle">請選擇您收到的**祝福卡主題**並輸入**生日月份**</p>
 
-    <label for="input-month">2. 輸入您的生日月份：</label>
-    <input type="number" id="input-month" placeholder="請輸入 1 到 12" min="1" max="12">
-    
-    <button onclick="getExclusiveBlessing()">領取我的專屬祝福經文</button>
-    
-    <div id="result-box">
-        <p id="result-text">請完成上方選擇與輸入後，點擊按鈕領取！</p>
+        <label for="input-theme">1. 選擇卡片主題：</label>
+        <select id="input-theme">
+            <option value="">-- 請選擇您卡片上的主題 --</option>
+            <option value="財務豐盛(祝福金杯)">財務豐盛(祝福金杯)</option>
+            <option value="家庭幸福(禱告香爐)">家庭幸福(禱告香爐)</option>
+            <option value="事奉得力(恩膏油瓶)">事奉得力(恩膏油瓶)</option>
+            <option value="靈命興盛(百煉金碗)">靈命興盛(百煉金碗)</option>
+            <option value="職場卓越(能力寶盒)">職場卓越(能力寶盒)</option>
+            <option value="福音廣傳(馨香花瓶)">福音廣傳(馨香花瓶)</option>
+            <option value="關係和睦(喜樂酒壺)">關係和睦(喜樂酒壺)</option>
+            <option value="牧養倍增(真理玉盤)">牧養倍增(真理玉盤)</option>
+        </select>
+
+        <label for="input-month">2. 輸入您的生日月份：</label>
+        <input type="number" id="input-month" placeholder="請輸入 1 到 12" min="1" max="12">
+
+        <button onclick="getExclusiveBlessing()">領取我的專屬祝福經文</button>
+
+        <div id="result-box">
+            <img src="https://github.com/Simple0223/HappyNewYear2025/blob/main/%E8%B7%A8%E5%B9%B4%E5%B0%8F%E5%9C%961.png?raw=true" class="corner-img left-top" alt="裝飾圖">
+            <img src="https://github.com/Simple0223/HappyNewYear2025/blob/main/%E8%B7%A8%E5%B9%B4%E5%B0%8F%E5%9C%962.png?raw=true" class="corner-img right-bottom" alt="裝飾圖">
+            <p id="result-text">請完成上方選擇與輸入後，點擊按鈕領取！</p>
+        </div>
     </div>
-</div>
 
 <script>
     // =========================================================================
@@ -277,10 +316,10 @@
         if (themeData && themeData[inputMonth]) {
             const verse = themeData[inputMonth];
             resultTextElement.innerHTML = `
-                <p style="color: #007bff; font-size: 1.1em; margin-bottom: 5px;">
-                    🎉 您的專屬祝福 (主題：${selectedTheme}，月份：${inputMonth}月):
+                <p style="color: #0e5563; font-size: 1.1em; margin-bottom: 5px;">
+                    🌟您的專屬祝福🌟
                 </p>
-                <div style="font-size: 1.3em; margin-top: 15px;">
+                <div style="font-size: 1em; margin-top: 15px;" >
                     ${verse}
                 </div>
             `;
